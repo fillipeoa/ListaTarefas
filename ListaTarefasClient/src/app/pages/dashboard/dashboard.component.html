@@ -6,24 +6,30 @@
         <div class="col-lg-4 col-sm-12 mt-2">
             <app-card-resumo
                 [titulo]="'Resumo de Hoje'"
-                [porcentagem]="'20%'"
-                [icone]="'fa-solid fa-calendar-week'"
+                [porcentagem]="tarefasService.estatisticas.dia.porcentagem"
+                [icone]="'fa-solid fa-calendar-day'"
+                [pTooltip]="tarefasService.estatisticas.dia.texto" 
+                tooltipPosition="bottom" 
             >
             ></app-card-resumo>
         </div>
         <div class="col-lg-4 col-sm-12 mt-2">
             <app-card-resumo
                 [titulo]="'Resumo da Semana'"
-                [porcentagem]="'20%'"
+                [porcentagem]="tarefasService.estatisticas.semana.porcentagem"
                 [icone]="'fa-solid fa-calendar-week'"
+                [pTooltip]="tarefasService.estatisticas.semana.texto" 
+                tooltipPosition="bottom" 
             >
             ></app-card-resumo>
         </div>
         <div class="col-lg-4 col-sm-12 mt-2">
             <app-card-resumo
                 [titulo]="'Resumo do Mês'"
-                [porcentagem]="'20%'"
-                [icone]="'fa-solid fa-calendar-week'"
+                [porcentagem]="tarefasService.estatisticas.mes.porcentagem"
+                [icone]="'fa-solid fa-calendar-days'"
+                [pTooltip]="tarefasService.estatisticas.mes.texto" 
+                tooltipPosition="bottom" 
             >
             ></app-card-resumo>
         </div>
@@ -32,37 +38,13 @@
     <hr class="divisor-pagina">
 
     <div class="row">
-        <div class="col-9">
-            <app-filtro-lateral></app-filtro-lateral>
-        </div>
-        <div class="col-3">
-            <p-button label="Nova Tarefa" icon="pi pi-plus" class="btn-nova-tarefa"/>
+        <div class="col-12">
+            <app-opcoes-tabela></app-opcoes-tabela>
         </div>
     </div>
 
     <div class="mt-4 div-tabela">
-        <p-table
-            [value]="products"
-            [paginator]="true"
-            [rows]="10"
-        >
-            <ng-template pTemplate="header">
-                <tr>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Category</th>
-                    <th>Status</th>
-                </tr>
-            </ng-template>
-            <ng-template pTemplate="body" let-product>
-                <tr>
-                    <td>{{product.name}}</td>
-                    <td>{{product.price | currency:'USD'}}</td>
-                    <td>{{product.category}}</td>
-                    <td><p-tag [value]="product.inventoryStatus" [severity]="getSeverity(product.inventoryStatus)" /></td>
-                </tr>
-            </ng-template>
-        </p-table>
+        <app-tabela></app-tabela>
     </div>
 </div>
 
