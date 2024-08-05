@@ -11,6 +11,14 @@ namespace ListaTarefasApi.Data
         {
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Tarefa>()
+                .HasOne(t => t.Status)
+                .WithMany()
+                .HasForeignKey(t => t.status_id);
+        }
+
         public DbSet<Tarefa> Tarefas { get; set; }
     }
 }

@@ -19,15 +19,42 @@ public class ListaTarefasController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Tarefa>>> GetTarefas()
+    public async Task<ActionResult<IEnumerable<TarefaDto>>> GetTarefas()
     {
-        return await _context.Tarefas.ToListAsync();
+        var tarefas = await _context.Tarefas
+            .Include(t => t.Status) // Inclui a entidade Status
+            .Select(t => new TarefaDto
+            {
+                id = t.id,
+                titulo = t.titulo,
+                status_id = t.status_id,
+                status = t.Status.descricao,
+                prazo_final = t.prazo_final,
+                created_at = t.created_at,
+                updated_at = t.updated_at
+            })
+            .ToListAsync();
+
+        return tarefas;
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<Tarefa>> GetTarefa(int id)
+    public async Task<ActionResult<TarefaDto>> GetTarefa(int id)
     {
-        var tarefa = await _context.Tarefas.FindAsync(id);
+        var tarefa = await _context.Tarefas
+            .Include(t => t.Status) // Inclui a entidade Status
+            .Where(t => t.id == id)
+            .Select(t => new TarefaDto
+            {
+                id = t.id,
+                titulo = t.titulo,
+                status_id = t.status_id,
+                status = t.Status.descricao,
+                prazo_final = t.prazo_final,
+                created_at = t.created_at,
+                updated_at = t.updated_at
+            })
+            .FirstOrDefaultAsync();
 
         if (tarefa == null)
         {
