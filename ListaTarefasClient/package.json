@@ -1,6 +1,6 @@
 {
   "name": "lista-tarefas-client",
-  "version": "0.0.0",
+  "version": "01.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
