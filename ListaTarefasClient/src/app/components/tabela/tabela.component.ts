@@ -2,19 +2,27 @@ import { Component, computed, signal } from '@angular/core';
 import { TableModule } from 'primeng/table';
 import { TagModule } from 'primeng/tag';
 import { TarefasService } from '../../services/tarefas.service';
+import { ButtonModule } from 'primeng/button';
+import { CommonModule } from '@angular/common';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-tabela',
   standalone: true,
   imports: [
+    CommonModule,
     TableModule,
-    TagModule
+    TagModule,
+    ButtonModule
   ],
   templateUrl: './tabela.component.html',
   styleUrl: './tabela.component.scss'
 })
 export class TabelaComponent {
-  constructor(private tarefasService: TarefasService) { }
+  constructor(
+    private tarefasService: TarefasService,
+    private messageService: MessageService
+  ) { }
   
   ngOnInit() {
   }
@@ -36,6 +44,19 @@ export class TabelaComponent {
 
   onItemAdded(x: string) {
     //this.tarefasService.add(x);
+  }
+
+  
+  excluirTarefa(id_tarefa: number){
+    this.tarefasService.delete(id_tarefa)
+    .subscribe((res: any)=>{
+      this.tarefasService.getAll();
+      this.messageService.add({severity:'success', summary:'Tarefa excluída', detail:'Tarefa excluída com sucesso!'});
+    },
+    (error: any)=>{
+      this.messageService.add({severity:'error', summary:'Erro ao excluir', detail:'Erro ao excluir tarefa!'});
+    }
+    );
   }
   
   obterCorStatus(status: any) {

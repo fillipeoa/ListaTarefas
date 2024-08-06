@@ -10,6 +10,9 @@ import { OpcoesTabelaComponent } from '../../components/opcoes-tabela/opcoes-tab
 import { TabelaComponent } from '../../components/tabela/tabela.component';
 import { TarefasService } from '../../services/tarefas.service';
 import { TooltipModule } from 'primeng/tooltip';
+import { ModalFormularioComponent } from '../../components/modal-formulario/modal-formulario.component';
+import { DialogModule } from 'primeng/dialog';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
   selector: 'app-dashboard',
@@ -24,7 +27,10 @@ import { TooltipModule } from 'primeng/tooltip';
     TabelaComponent,
     MenuModule,
     FormatarDataExtensoPipe,
-    TooltipModule
+    TooltipModule,
+    ModalFormularioComponent,
+    DialogModule,
+    ToastModule
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
@@ -33,10 +39,15 @@ export class DashboardComponent implements OnInit {
   
   dataAtual = new Date();
 
+  visible: boolean = false;
+
   constructor(protected tarefasService: TarefasService) { }
 
   ngOnInit() {
     this.tarefasService.getAll();
   }
 
+  showDialog() {
+      this.visible = true;
+  }
 }

@@ -4,6 +4,7 @@ import { SelectButtonModule } from 'primeng/selectbutton';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { ButtonModule } from 'primeng/button';
 import { TarefasService } from '../../services/tarefas.service';
+import { ModalFormularioService } from '../../services/modal-formulario.service';
 
 @Component({
   selector: 'app-opcoes-tabela',
@@ -18,7 +19,10 @@ import { TarefasService } from '../../services/tarefas.service';
   styleUrl: './opcoes-tabela.component.scss'
 })
 export class OpcoesTabelaComponent {
-  constructor(private tarefasService: TarefasService) { }
+  constructor(
+    private tarefasService: TarefasService,
+    protected modalFormularioService: ModalFormularioService
+  ) { }
 
   opcaoVisualizacaoSelecionada!: string;
   opcoesVisualizacao: any[] = [
