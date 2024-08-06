@@ -1,7 +1,10 @@
 # Gerenciador de Lista de Tarefas
 
+## Acesso ao Projeto Funcionando
+[Lista de Tarefas](https://lista-tarefas-angular-sprv-2tyef2f4z-fillipeoas-projects.vercel.app/)
+
 ## Descrição do Projeto
-Este projeto é uma aplicação web para gerenciar uma Lista de Tarefas. A aplicação permite cadastrar, remover e visualizar tarefas, além de filtrar as tarefas por status ou pela data.
+Este projeto é uma aplicação web para gerenciar uma Lista de Tarefas. A aplicação permite cadastrar, remover e visualizar tarefas, além de filtrar as tarefas por alguns atributos.
 
 ## Tecnologias Utilizadas
 - Backend: .NET Core
@@ -10,20 +13,16 @@ Este projeto é uma aplicação web para gerenciar uma Lista de Tarefas. A aplic
 - ORM: EntityFramework Core
 - Hospedagem do Banco de Dados: Amazon RDS
 - Hospedagem da API .NET: Azure
-- Hospedagem da Aplicação Angular: GitHub Pages
+- Hospedagem da Aplicação Angular: Vercel
 
 ## Funcionalidades
 - Visualizar a lista de tarefas
 - Cadastrar uma nova tarefa
 - Remover uma tarefa da lista
 - Filtrar tarefas por status
-- Filtrar tarefas do dia
-- Filtrar tarefas da semana
+- Filtrar tarefas por visualização (dia ou semana)
 
 ## Estrutura do Projeto
-### Backend
-O backend foi desenvolvido com .NET Core e utiliza o EntityFramework Core para persistência de dados. A API RESTful gerencia as operações CRUD (Create, Read, Update, Delete) das tarefas.
-
-### Frontend
-O frontend foi desenvolvido com Angula. A aplicação permite todas as operações necessárias para o gerenciamento das tarefas.
+- **ListaTarefasApi**: Contém o projeto .NET Core responsável pela API.
+- **ListaTarefasClient**: Contém o projeto Angular para o frontend da aplicação.
 
