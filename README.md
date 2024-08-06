@@ -3,7 +3,7 @@
 ## Acesso ao Projeto Funcionando
 [Lista de Tarefas](https://lista-tarefas-angular.vercel.app/)
 
-<img src="https://github.com/user-attachments/assets/45d14858-c36a-4e0d-a26a-d061f1d4bd1c" width="400">
+<img src="https://github.com/user-attachments/assets/5035b802-c26b-4804-a165-98aab52c70f9" width="500">
 
 ## Descrição do Projeto
 Este projeto é uma aplicação web para gerenciar uma Lista de Tarefas. A aplicação permite cadastrar, remover, editar e visualizar tarefas, além de filtrar as tarefas por alguns atributos.
