@@ -67,8 +67,6 @@ public class ListaTarefasController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<Tarefa>> PostTarefa(Tarefa tarefa)
     {
-        tarefa.created_at = DateTime.Now;
-        tarefa.updated_at = DateTime.Now;
         _context.Tarefas.Add(tarefa);
         await _context.SaveChangesAsync();
 

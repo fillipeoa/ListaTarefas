@@ -8,14 +8,6 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 builder.Services.AddControllers();
 
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowAll", builder =>
-        builder.AllowAnyOrigin()
-               .AllowAnyMethod()
-               .AllowAnyHeader());
-});
-
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddEndpointsApiExplorer();
@@ -36,10 +28,16 @@ app.UseHttpsRedirection();
 
 app.UseRouting();
 
-app.UseCors("AllowAll");
+app.UseCors(x => x
+        .AllowAnyMethod()
+        .AllowAnyHeader()
+        .SetIsOriginAllowed(origin => true) 
+        .AllowCredentials()); 
 
 app.UseAuthorization();
 
 app.MapControllers();
 
 app.Run();
+
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
